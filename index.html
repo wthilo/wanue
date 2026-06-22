@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wanue</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar" aria-label="Wanue Dashboard">
+        <div class="brand-lockup">
+          <svg class="brand-mark" viewBox="0 0 1416 705" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M532.76 298.765L620.26 223.765M532.76 298.765C392.76 298.765 332.76 183.765 314.01 123.765M532.76 298.765L576.51 386.265M882.76 298.765L795.26 223.765M882.76 298.765C1022.76 298.765 1082.76 183.765 1101.51 123.765M882.76 298.765L839.01 386.265M795.26 223.765L707.76 148.765L620.26 223.765M795.26 223.765L1101.51 123.765M620.26 223.765L314.01 123.765M7.76007 23.7651L160.885 73.7651M1407.76 23.7651L1254.64 73.7651M1101.51 123.765L1254.64 73.7651M314.01 123.765L160.885 73.7651M1254.64 73.7651C1232.76 183.765 1122.76 398.765 839.01 386.265M160.885 73.7651C182.76 183.765 292.76 398.765 576.51 386.265M576.51 386.265L620.26 473.765L707.76 648.765L795.26 473.765L839.01 386.265" stroke="currentColor" stroke-width="50"/>
+            <path d="M1072.76 123.765L792.76 223.765L882.76 298.765C1042.76 283.765 1076.09 172.765 1072.76 123.765Z" fill="currentColor"/>
+            <path d="M332.76 123.765L622.76 223.765L532.76 298.765C372.76 283.765 342.76 183.765 332.76 123.765Z" fill="currentColor"/>
+          </svg>
+          <h1>Wanue</h1>
+        </div>
+        <div class="market-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="dataStatus">Demo data</span>
+        </div>
+      </header>
+
+      <section class="summary-strip" aria-label="Nasdaq 100 overview">
+        <div class="summary-item">
+          <span>Index</span>
+          <strong>Nasdaq 100</strong>
+        </div>
+        <div class="summary-item">
+          <span>Sentiment</span>
+          <strong id="marketSignal">Neutral</strong>
+        </div>
+        <div class="summary-item">
+          <span>Trend</span>
+          <strong id="trendSummary">Sideways</strong>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="panel fear-panel" aria-labelledby="fear-title">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Sentiment</p>
+              <h2 id="fear-title">Fear &amp; Greed Index</h2>
+            </div>
+            <span id="fearState" class="pill">Neutral</span>
+          </div>
+          <div class="gauge-wrap">
+            <canvas id="fearGauge" width="420" height="240" aria-label="Fear and Greed Gauge"></canvas>
+            <div class="gauge-center">
+              <span id="fearValue">52</span>
+              <small>/ 100</small>
+            </div>
+          </div>
+          <div id="fearScale" class="scale-row" aria-hidden="true">
+            <span>Extreme Fear</span>
+            <span>Fear</span>
+            <span>Neutral</span>
+            <span>Greed</span>
+            <span>Extreme Greed</span>
+          </div>
+        </article>
+
+        <section class="criteria-grid" aria-label="Sentiment criteria">
+          <article class="panel metric-panel" aria-labelledby="momentum-title">
+            <div class="panel-header">
+              <div>
+                <p class="panel-kicker">Momentum</p>
+                <h2 id="momentum-title">Market Momentum</h2>
+              </div>
+              <span id="momentumState" class="pill">Neutral</span>
+            </div>
+            <div class="metric-display">
+              <span id="momentumValue">0</span>
+              <small>/ 100 · 5-WSMA / AWR(20)</small>
+            </div>
+            <div class="metric-track" aria-label="Market Momentum Score">
+              <span id="momentumBar" class="metric-bar"></span>
+            </div>
+          </article>
+
+          <article class="panel metric-panel" aria-labelledby="volatility-title">
+            <div class="panel-header">
+              <div>
+                <p class="panel-kicker">Volatility</p>
+                <h2 id="volatility-title">Market Volatility</h2>
+              </div>
+              <span id="volatilityState" class="pill">Neutral</span>
+            </div>
+            <div class="metric-display">
+              <span id="volatilityValue">0</span>
+              <small>/ 100 · VXN 5-WSMA / AWR(20)</small>
+            </div>
+            <div class="metric-track" aria-label="Market Volatility Score">
+              <span id="volatilityBar" class="metric-bar"></span>
+            </div>
+          </article>
+
+          <article class="panel options-panel" aria-labelledby="options-title">
+            <div class="panel-header">
+              <div>
+                <p class="panel-kicker">Options Sentiment</p>
+                <h2 id="options-title">Put/Call Comparison</h2>
+              </div>
+              <span id="optionsState" class="pill">Balanced</span>
+            </div>
+            <div class="ratio-display">
+              <span id="putCallRatio">0.91</span>
+              <small>QQQ Put/Call Ratio</small>
+            </div>
+            <div class="competition-bar" aria-label="Put Call comparison">
+              <span id="putBar" class="competition-segment put-segment"></span>
+              <span id="callBar" class="competition-segment call-segment"></span>
+              <span class="competition-midline" aria-hidden="true"></span>
+            </div>
+            <div class="competition-labels" aria-hidden="true">
+              <span>Put</span>
+              <span>Call</span>
+            </div>
+          </article>
+        </section>
+
+        <article class="panel trend-panel" aria-labelledby="trend-title">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Trend</p>
+              <h2 id="trend-title">Trend Analysis</h2>
+            </div>
+            <span id="trendState" class="pill">Sideways</span>
+          </div>
+          <div class="trend-metric">
+            <span id="trendScore">5 &gt; 10 &gt; 20</span>
+            <small>Weekly Simple Moving Averages</small>
+          </div>
+          <canvas id="trendChart" width="780" height="320" aria-label="Nasdaq 100 Trend Chart"></canvas>
+          <div class="legend-row" aria-label="Trend legend">
+            <span><i class="legend-price"></i>Price</span>
+            <span><i class="legend-ma5"></i>5 WSMA</span>
+            <span><i class="legend-ma10"></i>10 WSMA</span>
+            <span><i class="legend-ma20"></i>20 WSMA</span>
+          </div>
+        </article>
+      </section>
+
+      <footer class="source-line">
+        Demo data set; Wanue Fear &amp; Greed is a Nasdaq 100 model based on CNN-style logic
+      </footer>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
